@@ -6,13 +6,13 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:23:34 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/21 15:24:23 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:43:34 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_c(int c)
+int	ft_print_char(int c)
 {
 	ft_putchar_fd(c, 1);
 	return (1);

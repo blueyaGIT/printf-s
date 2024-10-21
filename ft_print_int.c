@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_i.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 11:46:18 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/21 15:42:47 by ghambrec         ###   ########.fr       */
+/*   Created: 2024/10/21 13:09:14 by ghambrec          #+#    #+#             */
+/*   Updated: 2024/10/21 15:43:28 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include "./libft/libft.h"
+static int	get_len(int n)
+{
+	int	len;
 
-int ft_printf(const char *inputstring, ...);
-int	ft_print_char(int c);
-int	ft_print_str(char *str);
-// pointer
-// decimal
-int	ft_print_int(int n);
-// unsigned decimal
-// hex
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while (n != 0)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
+}
 
-// wieder raus!
-#include <stdio.h>
-
-
-#endif
+int	ft_print_int(int n)
+{
+	ft_putnbr_fd(n, 1);
+	return (get_len(n));
+}

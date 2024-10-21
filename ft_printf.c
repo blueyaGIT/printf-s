@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:43:55 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/21 15:25:05 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:43:04 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ int ft_printf(const char *inputstring, ...)
 				len++;
 			}
 			else if (inputstring[i] == 'c')
-				len += ft_print_c(va_arg(args, int));
+				len += ft_print_char(va_arg(args, int));
 			else if (inputstring[i] == 's')
-				ft_putstr_fd(va_arg(args, char*), 1);
+				len += ft_print_str(va_arg(args, char*));
 			else if (inputstring[i] == 'p')
 				ft_putstr_fd("void pointer", 1);
 			else if (inputstring[i] == 'd')
 				ft_putstr_fd("decimal", 1);
 			else if (inputstring[i] == 'i')
-				len += ft_print_i(va_arg(args, int));
+				len += ft_print_int(va_arg(args, int));
 			else if (inputstring[i] == 'u')
 				ft_putstr_fd("unsigned decimal", 1);
 			else if (inputstring[i] == 'x')
@@ -66,7 +66,7 @@ int ft_printf(const char *inputstring, ...)
 
 int	main(void)
 {
-	int len = ft_printf("xxx%cxxx",'X');
+	int len = ft_printf("xxx%dxxx","XXX");
 	
 	
 	

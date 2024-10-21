@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_s.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 11:46:18 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/21 15:42:47 by ghambrec         ###   ########.fr       */
+/*   Created: 2024/10/21 15:32:59 by ghambrec          #+#    #+#             */
+/*   Updated: 2024/10/21 15:43:23 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include "./libft/libft.h"
-
-int ft_printf(const char *inputstring, ...);
-int	ft_print_char(int c);
-int	ft_print_str(char *str);
-// pointer
-// decimal
-int	ft_print_int(int n);
-// unsigned decimal
-// hex
-
-// wieder raus!
-#include <stdio.h>
-
-
-#endif
+int	ft_print_str(char *str)
+{
+	ft_putstr_fd(str, 1);
+	return (ft_strlen(str));
+}
