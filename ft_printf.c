@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:43:55 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/21 15:43:04 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:49:21 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,15 @@ int ft_printf(const char *inputstring, ...)
 			else if (inputstring[i] == 's')
 				len += ft_print_str(va_arg(args, char*));
 			else if (inputstring[i] == 'p')
-				ft_putstr_fd("void pointer", 1);
-			else if (inputstring[i] == 'd')
-				ft_putstr_fd("decimal", 1);
-			else if (inputstring[i] == 'i')
-				len += ft_print_int(va_arg(args, int));
+				ft_putstr_fd("void pointer", 1); // TODO
+			else if (inputstring[i] == 'd' || inputstring[i] == 'i')
+				len += ft_print_nbr(va_arg(args, int));
 			else if (inputstring[i] == 'u')
-				ft_putstr_fd("unsigned decimal", 1);
+				len += ft_print_unsigned_nbr(va_arg(args, unsigned int));
 			else if (inputstring[i] == 'x')
-				ft_putstr_fd("hexadezimal lower", 1);
+				ft_putstr_fd("hexadezimal lower", 1); // TODO
 			else if (inputstring[i] == 'X')
-				ft_putstr_fd("hexadezimal upper", 1);
+				ft_putstr_fd("hexadezimal upper", 1); // TODO
 		}
 		else
 		{
@@ -66,9 +64,7 @@ int ft_printf(const char *inputstring, ...)
 
 int	main(void)
 {
-	int len = ft_printf("xxx%dxxx","XXX");
-	
-	
+	int len = ft_printf("xxx%uxxx", 4294967295);
 	
 	ft_printf("\n\nLEN: [%i]\n\n", len);
 	return (0);
