@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:09:14 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/21 15:59:35 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:23:20 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int	get_len(int n)
 
 int	ft_print_nbr(int n)
 {
-	ft_putnbr_fd(n, 1);
+	if (ft_putnbr_fd(n, 1) == -1)
+		return (-1);
 	return (get_len(n));
 }

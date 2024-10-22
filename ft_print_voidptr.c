@@ -6,34 +6,50 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:49:54 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 12:47:10 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:20:40 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_voidptr(unsigned long long ptr, int initlen)
+static int	ft_put_voidptr(unsigned long long ptr, int len)
 {
-	char		*hex;
-	static int	len = 0;
+	char	*hex;
+	int		res;
 
-	len = initlen;
+	res = 0;
 	hex = "0123456789abcdef";
-	if (len == 0)
-	{
-		ft_putstr_fd("0x", 1);
-		len += 2;
-	}
-	if (ptr == 0)
-	{
-		ft_putchar_fd('0', 1);
-		return (len + 1);
-	}
 	if (ptr >= 16)
 	{
-		ft_print_voidptr(ptr / 16, len);
+		len = ft_put_voidptr(ptr / 16, len);
+		if (len == -1)
+			return (-1);
 	}
-	ft_putchar_fd(hex[ptr % 16], 1);
-	len += 1;
+	res = ft_putchar_fd(hex[ptr % 16], 1);
+	if (res == -1)
+		return (-1);
+	len += res;
+	return (len);
+}
+
+int	ft_print_voidptr(unsigned long long ptr)
+{
+	int	len;
+	int	res;
+
+	len = ft_putstr_fd("0x", 1);
+	if (len == -1)
+		return (-1);
+	if (ptr == 0)
+	{
+		res = ft_putchar_fd('0', 1);
+		if (res == -1)
+			return (-1);
+		return (len + res);
+	}
+	res = ft_put_voidptr(ptr, 0);
+	if (res == -1)
+		return (-1);
+	len += res;
 	return (len);
 }

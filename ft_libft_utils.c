@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:45:23 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 11:52:41 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:20:02 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,37 +24,47 @@ size_t	ft_strlen(const char *str)
 	return (len);
 }
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	return (write(fd, &c, 1));
 }
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
 	{
-		write(fd, "-2147483648", 11);
-		return ;
+		if (write(fd, "-2147483648", 11) == -1)
+			return (-1);
+		return (0);
 	}
 	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
+		if (ft_putchar_fd('-', fd) == -1)
+			return (-1);
 		n = n * -1;
 	}
 	if (n >= 10)
 	{
-		ft_putnbr_fd(n / 10, fd);
+		if (ft_putnbr_fd(n / 10, fd) == -1)
+			return (-1);
 	}
-	ft_putchar_fd(n % 10 + '0', fd);
+	if (ft_putchar_fd(n % 10 + '0', fd) == -1)
+		return (-1);
+	return (0);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
+	int	len;
+
+	len = ft_strlen(s);
 	while (*s != '\0')
 	{
-		write(fd, s, 1);
+		if (ft_putchar_fd(*s, fd) == -1)
+			return (-1);
 		s++;
 	}
+	return (len);
 }
 
 char	*ft_strchr(const char *str, int c)

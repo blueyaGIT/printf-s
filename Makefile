@@ -3,7 +3,6 @@ NAME = libftprintf.a
 CFLAGS = -Wall -Wextra -Werror
 
 SOURCES =	ft_libft_utils.c \
-			ft_print_char.c \
 			ft_print_hex_nbr.c \
 			ft_print_nbr.c \
 			ft_print_str.c \

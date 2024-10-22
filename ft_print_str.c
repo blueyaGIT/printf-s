@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 15:32:59 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 12:19:32 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:14:48 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	ft_print_str(char *str)
 {
 	if (!str)
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);	
+		return (ft_putstr_fd("(null)", 1));
 	}
-	ft_putstr_fd(str, 1);
-	return (ft_strlen(str));
+	return (ft_putstr_fd(str, 1));
 }

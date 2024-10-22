@@ -6,70 +6,59 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:43:55 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 13:02:14 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:31:28 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-int ft_printf(const char *inputstring, ...)
+int	ft_print_conversion(char conversion, va_list args)
 {
-	int	i;
-	int	len;
-	va_list args;
+	if (conversion == '%')
+		return (ft_putchar_fd('%', 1));
+	else if (conversion == 'c')
+		return (ft_putchar_fd(va_arg(args, int), 1));
+	else if (conversion == 's')
+		return (ft_print_str(va_arg(args, char *)));
+	else if (conversion == 'p')
+		return (ft_print_voidptr(va_arg(args, unsigned long long)));
+	else if (conversion == 'd' || conversion == 'i')
+		return (ft_print_nbr(va_arg(args, int)));
+	else if (conversion == 'u')
+		return (ft_print_unsigned_nbr(va_arg(args, unsigned int)));
+	else if (conversion == 'x')
+		return (ft_print_hex_nbr(va_arg(args, unsigned long long), 0, 0));
+	else if (conversion == 'X')
+		return (ft_print_hex_nbr(va_arg(args, unsigned long long), 1, 0));
+	else
+		return (-1);
+}
+
+int	ft_printf(const char *inputstring, ...)
+{
+	int		res;
+	int		len;
+	va_list	args;
 
 	va_start(args, inputstring);
-	i = 0;
 	len = 0;
-
-	while (inputstring[i])
+	while (*inputstring)
 	{
-		if (inputstring[i] == '%' && ft_strchr("cspdiuxX%",inputstring[i + 1]))
+		if (*inputstring == '%' && ft_strchr("cspdiuxX%", *(inputstring + 1)))
 		{
-			i++;
-			if (inputstring[i] == '%')
-			{
-				ft_putchar_fd('%', 1);
-				len++;
-			}
-			else if (inputstring[i] == 'c')
-				len += ft_print_char(va_arg(args, int));
-			else if (inputstring[i] == 's')
-				len += ft_print_str(va_arg(args, char*));
-			else if (inputstring[i] == 'p')
-				len += ft_print_voidptr(va_arg(args, unsigned long long), 0);
-			else if (inputstring[i] == 'd' || inputstring[i] == 'i')
-				len += ft_print_nbr(va_arg(args, int));
-			else if (inputstring[i] == 'u')
-				len += ft_print_unsigned_nbr(va_arg(args, unsigned int));
-			else if (inputstring[i] == 'x')
-				len += ft_print_hex_nbr(va_arg(args, unsigned long long), 0);
-			else if (inputstring[i] == 'X')
-				len += ft_print_hex_nbr(va_arg(args, unsigned long long), 1);
+			inputstring++;
+			res = ft_print_conversion(*inputstring, args);
+			if (res == -1)
+				return (va_end(args), -1);
+			len += res;
 		}
 		else
 		{
-			ft_putchar_fd(inputstring[i], 1);
+			if (ft_putchar_fd(*inputstring, 1) == -1)
+				return (va_end(args), -1);
 			len++;
 		}
-		i++;
+		inputstring++;
 	}
-	va_end(args); //muss auch geschlossen werden bei -1 returns!!!!
-	return (len);
+	return (va_end(args), len);
 }
-
-// 30:     TEST(6, 
-// 31:     TEST(7, print(" %p %p ", INT_MIN, INT_MAX));
-// 32:     TEST(8, print(" %p %p ", ULONG_MAX, -ULONG_MAX));
-// 33:     TEST(9, print(" %p %p ", 0, 0));
-
-// #include <limits.h>
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	int len = ft_printf(" %u ", 1);
-// 	ft_printf("\n\nLEN: [%i]\n\n", len);
-// 	return (0);
-// }
