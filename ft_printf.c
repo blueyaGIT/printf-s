@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:43:55 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 10:56:05 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 11:34:59 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ int ft_printf(const char *inputstring, ...)
 			else if (inputstring[i] == 's')
 				len += ft_print_str(va_arg(args, char*));
 			else if (inputstring[i] == 'p')
-				ft_putstr_fd("void pointer", 1); // TODO
+				len += ft_print_voidptr(va_arg(args, unsigned long long));
 			else if (inputstring[i] == 'd' || inputstring[i] == 'i')
 				len += ft_print_nbr(va_arg(args, int));
 			else if (inputstring[i] == 'u')
 				len += ft_print_unsigned_nbr(va_arg(args, unsigned int));
 			else if (inputstring[i] == 'x')
-				ft_putstr_fd("hexadezimal lower", 1); // TODO
+				len += ft_print_hex_nbr(va_arg(args, unsigned long long), 0);
 			else if (inputstring[i] == 'X')
-				ft_putstr_fd("hexadezimal upper", 1); // TODO
+				len += ft_print_hex_nbr(va_arg(args, unsigned long long), 1);
 		}
 		else
 		{
@@ -62,10 +62,10 @@ int ft_printf(const char *inputstring, ...)
 	return (len);
 }
 
-// int	main(void)
-// {
-// 	int len = ft_printf("xxx%uxxx", 4294967295);
+int	main(void)
+{
+	int len = ft_printf("xxx%sxxx", "Hallo1!!!!!!");
 	
-// 	ft_printf("\n\nLEN: [%i]\n\n", len);
-// 	return (0);
-// }
+	ft_printf("\n\nLEN: [%i]\n\n", len);
+	return (0);
+}
