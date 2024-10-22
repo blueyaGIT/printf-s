@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:46:18 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 12:01:19 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:45:12 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int		ft_print_char(int c);
 int		ft_print_str(char *str);
 int		ft_print_nbr(int n);
 int		ft_print_unsigned_nbr(unsigned long n);
-int		ft_print_voidptr(unsigned long long ptr);
+int		ft_print_voidptr(unsigned long long ptr, int initlen);
+// int	ft_print_voidptr(unsigned long long ptr);
 int		ft_print_hex_nbr(unsigned long long n, int upper);
 
 #endif

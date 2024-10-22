@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:43:55 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 12:01:29 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:02:14 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int ft_printf(const char *inputstring, ...)
 			else if (inputstring[i] == 's')
 				len += ft_print_str(va_arg(args, char*));
 			else if (inputstring[i] == 'p')
-				len += ft_print_voidptr(va_arg(args, unsigned long long));
+				len += ft_print_voidptr(va_arg(args, unsigned long long), 0);
 			else if (inputstring[i] == 'd' || inputstring[i] == 'i')
 				len += ft_print_nbr(va_arg(args, int));
 			else if (inputstring[i] == 'u')
@@ -55,6 +55,21 @@ int ft_printf(const char *inputstring, ...)
 		}
 		i++;
 	}
-	va_end(args);
+	va_end(args); //muss auch geschlossen werden bei -1 returns!!!!
 	return (len);
 }
+
+// 30:     TEST(6, 
+// 31:     TEST(7, print(" %p %p ", INT_MIN, INT_MAX));
+// 32:     TEST(8, print(" %p %p ", ULONG_MAX, -ULONG_MAX));
+// 33:     TEST(9, print(" %p %p ", 0, 0));
+
+// #include <limits.h>
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	int len = ft_printf(" %u ", 1);
+// 	ft_printf("\n\nLEN: [%i]\n\n", len);
+// 	return (0);
+// }

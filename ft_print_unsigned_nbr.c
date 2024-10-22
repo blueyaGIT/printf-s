@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:09:14 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/21 16:45:55 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:01:53 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	get_len(unsigned long n)
 	int	len;
 
 	len = 0;
+	if (n == 0)
+		len = 1;
 	while (n != 0)
 	{
 		len++;
