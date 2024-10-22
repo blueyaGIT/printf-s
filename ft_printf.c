@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:43:55 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 11:34:59 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 12:01:29 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,6 @@ int ft_printf(const char *inputstring, ...)
 		}
 		i++;
 	}
-
 	va_end(args);
-	
-
 	return (len);
-}
-
-int	main(void)
-{
-	int len = ft_printf("xxx%sxxx", "Hallo1!!!!!!");
-	
-	ft_printf("\n\nLEN: [%i]\n\n", len);
-	return (0);
 }
