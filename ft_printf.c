@@ -6,7 +6,7 @@
 /*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 11:43:55 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/21 16:49:21 by ghambrec         ###   ########.fr       */
+/*   Updated: 2024/10/22 10:56:05 by ghambrec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ int ft_printf(const char *inputstring, ...)
 	return (len);
 }
 
-int	main(void)
-{
-	int len = ft_printf("xxx%uxxx", 4294967295);
+// int	main(void)
+// {
+// 	int len = ft_printf("xxx%uxxx", 4294967295);
 	
-	ft_printf("\n\nLEN: [%i]\n\n", len);
-	return (0);
-}
+// 	ft_printf("\n\nLEN: [%i]\n\n", len);
+// 	return (0);
+// }
