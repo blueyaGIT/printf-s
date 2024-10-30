@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_voidptr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/21 15:49:54 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 17:20:40 by ghambrec         ###   ########.fr       */
+/*   Created: 2024/10/21 15:49:54 by dalbano           #+#    #+#             */
+/*   Updated: 2024/10/30 15:10:54 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_libft_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghambrec <ghambrec@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 11:45:23 by ghambrec          #+#    #+#             */
-/*   Updated: 2024/10/22 17:20:02 by ghambrec         ###   ########.fr       */
+/*   Created: 2024/10/22 11:45:23 by dalbano           #+#    #+#             */
+/*   Updated: 2024/10/30 15:16:13 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
